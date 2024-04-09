@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Our Custom Model</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+	<style type="text/css">
+		html, body{
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+
+		html{
+			background-image: url('wall2.jpg');
+			background-size: cover;
+			font-size: 30px;
+		}
+		.button{
+			font-size: 22px;
+			text-align: center;
+			line-height: 44px;
+			background-color: grey;
+			color: white;
+			border-radius: 4px;
+			padding: 5px 25px 5px 25px;
+			outline: 0 !important;
+			box-shadow: 0 4px 0 #blue;
+			transition: all 0.15s ease-in-out;
+			margin-top: -4px;
+
+		}
+		.button:hover{
+			background-color: black;
+			box-shadow: white;
+		}
+		.button:active{
+			background-color: 0px;
+			box-shadow: none;
+		}
+		.button--close{
+			font-size: 22px;
+			text-align: center;
+			line-height: 44px;
+			background-color: grey;
+			color: white;
+			border-radius: 4px;
+			padding: 5px 25px 5px 25px;
+			outline: 0 !important;
+
+		}
+		.button--accept{
+			font-size: 22px;
+			text-align: center;
+			line-height: 44px;
+			background-color: grey;
+			color: white;
+			border-radius: 4px;
+			padding: 5px 25px 5px 25px;
+			outline: 0 !important;
+
+		}
+		.button--close:hover,.button--accept:hover{
+			background-color: orange;
+			box-shadow: white;
+
+		}
+		.center{
+			position: relative;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#modal-bg{
+			background-color: rgba(0, 0, 0, 0.45);
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -10;
+			opacity: 0;
+			transition: opacity 0.25s ease-in-out, z-index 0.25s ease-in-out;
+		}
+		#modal-bg.active{
+			opacity: 1;
+			z-index: 10;
+		}
+
+		#modal-box{
+			background-color: white;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			max-width: 800px;
+			min-width: 600px;
+			padding: 25px;
+			
+			transform: translate(-50%, -50%);
+			opacity: 0;
+			z-index: -10;
+			transition: opacity 0.25s ease-in-out, z-index 0.25s ease-in-out;
+		}
+		#modal-box.active{
+			opacity: 1;
+			z-index: 11;
+		}
+		h1,p{
+			font-family: 'Ubuntu',regular;
+		}
+	</style>
+</head>
+<body>
+
+	<button type="button" class="button center js-open">
+		Open Modal
+	</button>
+
+	<div id="modal-bg" ></div>
+	<div id="modal-box" >
+		<h1>Custom Modal</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor ante, viverra quis molestie vitae, lobortis at odio. Proin hendrerit placerat tincidunt.
+		</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor ante, viverra quis molestie vitae, lobortis at odio. Proin hendrerit placerat tincidunt.
+		</p>
+		<div>
+			<button type="button" class="button button--close js-close">
+				Close
+			</button>
+			<button type="button" class="button button--accept js-accept">
+				Accept
+			</button>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		const openBtn = document.querySelector(".js-open")
+		const modalBg = document.getElementById("modal-bg")
+		const modalBox = document.getElementById("modal-box")
+
+		openBtn.addEventListener('click', function(event){
+			event.preventDefault()
+			console.log("Hello This is a click!")
+			modalBg.classList.add("active")
+			modalBox.classList.add("active")
+		})
+
+		const closeBtn = document.querySelectorAll(".js-close")
+		closeBtn.forEach(node =>{
+			console.log("node is", node)
+			node.addEventListener('click',function(e){
+				e.preventDefault()
+				modalBg.classList.remove("active")
+				modalBox.classList.remove("active")
+
+			})
+		})
+		
+
+	</script>
+
+
+</body>
+</html>
